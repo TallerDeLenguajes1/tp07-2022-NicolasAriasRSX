@@ -8,13 +8,28 @@
 
             cargarListaTareas(listaTareas);
             mostrarListaTareas(listaTareas);
+            Console.ReadKey();
             Console.Clear();
             gestorTareas(listaTareas, tareasRealizadas, tareasPendientes);
+            Console.ReadKey();
             Console.Clear();
             Console.WriteLine("-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\nTareas Realizadas: ");
             mostrarListaTareas(tareasRealizadas);
             Console.WriteLine("-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\ntareas Pendientes");
             mostrarListaTareas(tareasPendientes);
+            Console.ReadKey();
+            Console.Clear();
+            horasTrabajadas(tareasRealizadas);
+            Console.ReadKey();
+            Console.Clear();
+            Console.WriteLine("Buscar tarea");
+            Console.Write("Ingrese la descripcion buscada: ");
+            string buscar= Console.ReadLine();
+            Console.WriteLine("Buscar en tareas realizadas: ");
+            buscarTarea(tareasRealizadas, buscar);
+            // Console.WriteLine("");
+            Console.WriteLine("Buscar en tareas pendientes: ");
+            buscarTarea(tareasPendientes, buscar);
             
             return 0;
             void cargarListaTareas(List<Tarea> listaTareas)
@@ -77,6 +92,36 @@
                     }
 
                 }
+            }
+            void buscarTarea(List<Tarea> listaTarea, string buscar)
+            {
+
+                int cont= 0;
+                for (int i = 0; i < listaTarea.Count(); i++)
+                {
+                    if (listaTarea[i].DescripcionTarea.Contains(buscar))
+                    {
+                        cont++;
+                    }
+                }
+                if(cont > 0)
+                {
+                    Console.WriteLine("Encontrada.\n");
+                }
+                else
+                {
+                    Console.WriteLine("No se encontro");
+                }
+                
+            }
+            void horasTrabajadas(List<Tarea> listaTarea)
+            {
+                int hsTrabajadas= 0;
+                for(int i= 0; i < listaTarea.Count(); i++)
+                {
+                    hsTrabajadas+= listaTarea[i].DuracionTarea;
+                }
+                Console.WriteLine("Horas trabajadas: " + hsTrabajadas);
             }
         }
     }
