@@ -2,6 +2,7 @@
     public static class program{
         public static int Main(string[] args)
         {
+            //Creacion de listas;
             List<Tarea> listaTareas= new List<Tarea>();
             List<Tarea> tareasPendientes= new List<Tarea>();
             List<Tarea> tareasRealizadas= new List<Tarea>();
